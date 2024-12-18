@@ -1,0 +1,10 @@
+[project]
+name = "pyui-live-compiler"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pyqt6>=6.8.0",
+    "watchdog>=6.0.0",
+]

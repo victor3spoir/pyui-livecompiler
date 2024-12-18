@@ -14,8 +14,13 @@ class MainPage(QWidget, Ui_MainPage):
         self.setupUi(self)  # type:ignore
         self.vm = vm
 
+        self.initialize_interfaces()
         self.initialize_bindings()
         return
+
+    def initialize_interfaces(self) -> None:
+        self.lineedit_path.setReadOnly(True)
+        return None
 
     def initialize_bindings(self) -> None:
         self.button_watch.clicked.connect(self.vm.command_watch)
@@ -26,7 +31,7 @@ class MainPage(QWidget, Ui_MainPage):
     @pyqtSlot()
     def open_select_folder_dialog(self) -> None:
         folder_name = QFileDialog.getExistingDirectory(
-            self, "Choose folder to watch", ""
+            self, "Choose folder to watch", self.vm.latest_src_path.as_posix()
         )
         if not folder_name:
             return None
@@ -34,4 +39,6 @@ class MainPage(QWidget, Ui_MainPage):
         if not folder.exists():
             return None
         self.vm.update_src_path(folder.as_posix())
+        self.lineedit_path.setText(folder.as_posix())
+
         return None

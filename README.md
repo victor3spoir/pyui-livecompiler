@@ -4,7 +4,7 @@
 
 <h1>PYUI-LiveCompiler</h1>
 <p>
-You create application with Qt/PyQt/Qt Designer, this tool with easy your work <br>
+You create application with Qt/PyQt/Qt Designer, this tool will easy your work <br>
 It keeps your py files derivied from ui files update on every modifications you add to the ui.
 </p>
 </div>

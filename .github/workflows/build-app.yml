@@ -1,0 +1,26 @@
+name: Build PYUI-LiveCompiler
+run-name: ${{ github.actor }}
+on:
+  push:
+    # branches:
+    #   - main
+
+jobs:
+  buildapp:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: astral-sh/setup-uv@v4
+        with:
+          version: '0.5.10'
+      - name: Install
+        run: build.ps1
+      - name: Build
+        run: ./build.ps1
+      - uses: actions/download-artifact@v4
+        with:
+          name: pyui-livecompiler
+          path: ./dist/pyui-livecompiler
